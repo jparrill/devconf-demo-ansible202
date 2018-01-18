@@ -14,9 +14,11 @@ Dummy Ansible Role to show how molecule works.
 
 Example Playbook
 
+```
 - hosts: servers
   roles:
      - role: check_ansible_version
+```
 
 ## How to try it?
 
