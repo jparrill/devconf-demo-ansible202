@@ -1,0 +1,24 @@
+---
+- name: '[TASKS] Default Parameters'
+  hosts: localhost
+  vars:
+    - default_work_folder: '/tmp/role_sample'
+    - default_work_file: "{{ entry_file | default('temporary_file.txt')}}"
+  tasks:
+    - name: '[TASKS] Show params'
+      debug:
+        msg: "{{ item }}"
+      with_items:
+        - "{{ default_work_folder }}"
+        - "{{ default_work_file }}"
+
+    - name: '[TASK] Validate variable'
+      set_fact:
+        test: "{{ default_work_file | default('TEST DEFAULT VALUE')}}"
+
+    - name: '[TASKS] Show params'
+      debug:
+        msg: "{{ item }}"
+      with_items:
+        - "{{ default_work_file }}"
+        - "{{ test }}"

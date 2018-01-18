@@ -1,0 +1,10 @@
+---
+- name: '[DEBUG] Debug Strategy'
+  hosts: localhost
+  strategy: debug
+  vars:
+    - troubleshooting: 'yes'
+  tasks:
+    - name: '[DEBUG] Test Debug Strategy'
+      fail:
+        msg: 'This error will show you how works debug strategy'

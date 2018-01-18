@@ -1,0 +1,9 @@
+---
+# This is not a full playbook
+# main.yml from X role
+#
+- include: 00_validations.yml
+- include: 01_packages.yml
+- include: 02_configuration.yml
+- include: 03_service.yml
+- include: 04_tests.yml

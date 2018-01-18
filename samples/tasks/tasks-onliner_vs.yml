@@ -1,0 +1,13 @@
+---
+- name: '[TASKS] Oneliner vs Yaml'
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: '[TASKS][ONELINER] Bad'
+      debug: msg='This is not YAML compliance'
+
+    - name: '[TASKS][YAML] Good'
+      debug: 
+        msg: 'This is YAML compliance'
+
+

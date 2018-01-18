@@ -1,0 +1,16 @@
+---
+- name: '[TASKS] Dynamic Inclusion'
+  hosts: localhost
+  vars:
+    - release: "{{ osp_release }}"
+  tasks:
+    - name: '[TASKS] Pre-load OSP Variables from current release'
+      include_vars:
+        name:
+        file: "osp_vars/{{ release }}.yml"
+
+    - name: '[TASKS] Show variables'
+      debug:
+        var: item
+      with_items:
+        - "{{ keystone.packages }}"

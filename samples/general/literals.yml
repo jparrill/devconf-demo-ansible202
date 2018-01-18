@@ -1,0 +1,37 @@
+
+---
+- name: '[LITERALS] How to put your literals at Ansible'
+  hosts: localhost
+  vars:
+    - fixed_var: 'yes'
+    - var_with_default: "{{ troubleshoot | default(false) }}"
+    - standard_var: "{{ test }}"
+  tasks:
+    - name: '[LITERALS] Test vars'
+      debug:
+        var: item
+      with_items:
+        - "{{ fixed_var }}"
+        - "{{ var_with_default }}"
+        - "{{ standard_var }}"
+      when:
+        - "'yes' in fixed_var"
+
+    - name: '[LITERALS] Conditionals'
+      debug:
+        var: item
+      with_items:
+        - "{{ fixed_var }}"
+      when:
+        - "'yes' in fixed_var"
+
+    - name: '[LITERALS] Lookups'
+      debug:
+        var: lookup('file', '/etc/redhat-release')
+
+    - name: '[LITERALS] Lookups loop'
+      debug:
+        var: item
+      with_items:
+        - "{{ lookup('file', '/etc/redhat-release') }}"
+

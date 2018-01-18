@@ -1,4 +1,4 @@
-# DevConf Demo Ansible 202
+# DevConf.cz 2018 - Ansible 202
 
 Dummy Ansible Role to show how molecule works.
 
@@ -38,8 +38,12 @@ molecule test
 
 Beerware
 
-## Author Information
+## References
 
-[Juan Manuel Parrilla](https://twitter.com/Kerbeross)
-
-
+- [Juan Manuel Parrilla](https://twitter.com/Kerbeross)
+- [Talk Description](Ansible202-DevConf.md)
+- [Testing roles with TravisCI](https://www.jeffgeerling.com/blog/testing-ansible-roles-travis-ci-github)
+- [Testing Roles on multiple OS](https://www.jeffgeerling.com/blog/2016/how-i-test-ansible-configuration-on-7-different-oses-docker)
+- [Testing Roles with Docker](https://www.ansible.com/blog/testing-ansible-roles-with-docker) 
+- [Molecule Docs](https://molecule.readthedocs.io/en/latest/usage.html)
+- [Molecule Repo](https://github.com/metacloud/molecule)

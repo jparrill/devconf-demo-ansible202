@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Juan Manuel Parrilla <jparrill@redhat.com>
+  description: Dummy Role
+  company: Red Hat
+  license: Beerware
+  min_ansible_version: '2.3.1'
+  platforms:
+    - name: EL
+      versions:
+        - 6
+        - 7
+  galaxy_tags: ['cloud', 'openstack', 'config management']
+dependencies:
+  - { role: common, some_parameter: 3 }
+  - { role: apache, apache_port: 80 }
+  - { role: postgres, dbname: blarg, other_parameter: 12 }

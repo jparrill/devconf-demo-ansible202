@@ -1,0 +1,12 @@
+---
+AK: 'ak-ilab-rhel'
+keystone:
+  packages:
+    - '*keystone*'
+
+horizon:
+  packages:
+    - '*horizon*'
+    - '*openstack-dashboard*'
+    - '*python-django*'
+    

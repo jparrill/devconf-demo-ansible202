@@ -1,0 +1,24 @@
+---
+# Parameters:
+#   - sample_folder type str
+# Sample Execution:
+#   - ansible-playbook roles-execution-sample.yml -v --extra-vars 'sample_folder=test_folder'
+- name: '[ROLES] Execution Example'
+  hosts: localhost
+  vars:
+    - default_work_folder: '/tmp/role_sample'
+  tasks:
+    - name: '[ROLES] Create TMP Folder'
+      file:
+        state: directory
+        path: "{{ default_work_folder }}/{{ sample_folder }}"
+
+    - name: '[ROLES] Create Files'
+      file:
+        state: touch
+        path: "{{ default_work_folder }}/{{ sample_folder }}/{{ item }}" 
+      with_items:
+        - 'roles_01'
+        - 'roles_02'
+        - 'roles_03'
+        - 'roles_04'

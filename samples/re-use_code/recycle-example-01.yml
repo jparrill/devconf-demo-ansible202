@@ -1,0 +1,25 @@
+---
+- name: 'Role to Install or Upgrade OSP'
+  hosts: labo
+  vars:
+    - troubleshooting: "{{ troubleshoot | default(false) }}"
+  pre_tasks:
+    ## This step will fullfil the vars to be used on Ansible Roles/Playbooks
+    - name: 'Getting Variables from ETCD Folder'
+      connection: local
+      set_fact:
+        VAR_MAP: "{{ lookup('etcd', '/{{ REGION }}/{{ RELEASE }}') }}"
+      environment:
+        ANSIBLE_ETCD_VERSION: 'v2'
+        ANSIBLE_ETCD_URL: 'http://127.0.0.1:2379'
+
+    - name: 'Pre-load OSP Variables from current release'
+      include_vars:
+        name:
+        file: "osp_vars/{{ RELEASE }}.yml"
+  roles:
+    - role: common
+    - { role: keystone, action: 'service_stop' }
+    - { role: keystone, action: 'service_start' }
+    - { role: keystone, action: 'modular' }
+    - { role: keystone, action: 'standard' }

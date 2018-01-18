@@ -1,0 +1,20 @@
+---
+- name: '[DEBUG] Debugging Tasks'
+  hosts: localhost
+  vars:
+    - test_debug: 'yes'
+  tasks:
+    - name: '[DEBUG] Debug variable to ensure the content'
+      debug:
+        msg: "If you put -v you will see this message {{ test_debug }}"
+        verbosity: 1
+
+    - name: '[DEBUG] Debug variable to ensure the content'
+      debug:
+        msg: "If you put -vv you will see this message {{ test_debug }} and the last one"
+        verbosity: 2
+
+    - name: '[DEBUG] Debug variable to ensure the content'
+      debug:
+        msg: "If you put -vvv you will see all messages {{ test_debug }}"
+        verbosity: 3

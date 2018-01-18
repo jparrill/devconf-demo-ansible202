@@ -1,0 +1,9 @@
+---
+- name: '[VAULT] Show Vault features'
+  hosts: localhost
+  vars_files:
+    - test_vault.yml
+  tasks:
+    - name: '[VAULT] Show vault variable'
+      debug:
+        var: test

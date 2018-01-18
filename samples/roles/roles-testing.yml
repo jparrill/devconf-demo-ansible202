@@ -1,0 +1,21 @@
+---
+- name: Bring up docker containers
+  hosts: localhost
+  become: true
+  vars:
+    inventory:
+      - name: test_01
+        image: "centos:latest"
+      - name: test_02
+        image: "centos:latest"
+  roles:
+    - role: provision_docker
+      provision_docker_inventory: "{{ inventory }}"
+      provision_docker_privileged: true
+      provision_docker_use_docker_connection: true
+
+- name: Hello world
+  hosts: docker_containers
+  tasks:
+    - debug:
+        msg: ”Hello World”

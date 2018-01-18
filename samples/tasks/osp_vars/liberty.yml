@@ -1,0 +1,13 @@
+---
+AK: 'ak-ilab-rhel'
+keystone:
+  packages:
+    - 'openstack-keystone*'
+    - 'python-keystone*'
+  config_files:
+    wsgi-keystone:
+      template: "{{ playbook_dir }}/osp_templates/{{ release }}/controller/controller-keystone-wsgi-keystone.conf.j2"
+      origin: /etc/httpd/conf.d/wsgi-keystone.conf
+    keystone-conf:
+      template: "{{ playbook_dir }}/osp_templates/{{ release }}/controller/controller-keystone-keystone.conf.j2"
+      origin: /etc/keystone/keystone.conf

@@ -1,0 +1,31 @@
+---
+- name: '[ROLES] Groupping features'
+  hosts: localhost
+  become: true
+  vars:
+    - playbook_action: "{{ state | default('create_file') }}"
+  tasks:
+    - block:
+      - name: '[ROLES][SERVICE] Start Service Flow'
+        service:
+          name: 'docker'
+          state: started
+          enabled: yes
+
+      rescue:
+      - name: '[ROLES][SERVICE] Start Service Flow'
+        service:
+          name: 'docker'
+          state: started
+          enabled: yes
+          daemon_reload: yes
+      when: "'start_service' in playbook_action"
+
+    - block:
+      - name: '[ROLES][FILE] Create File'
+        file:
+          state: touch
+          path: '/tmp/test_file'
+      when: "'create_file' in playbook_action"
+
+
