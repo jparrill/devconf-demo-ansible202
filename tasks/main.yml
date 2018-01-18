@@ -1,0 +1,10 @@
+---
+- name: '[CHECK ANSIBLE VERSION][MAIN] See Ansible Version'
+  command: 'ansible --version'
+  connection: local
+  register: An_v
+  changed_when: false
+
+- name: '[CHECK ANSIBLE VERSION][MAIN] Print Ansible Version'
+  debug:
+    var: An_v

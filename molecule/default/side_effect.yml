@@ -1,0 +1,8 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: False
+  tasks:
+    - name: '[SIDE EFFECT] Test Side Effect playbook'
+      debug: 
+        msg: "Testing side effect on molecule"

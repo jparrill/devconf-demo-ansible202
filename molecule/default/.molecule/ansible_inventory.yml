@@ -1,0 +1,29 @@
+# Molecule managed
+
+---
+all:
+  hosts:
+    Ansible-2.2.0: &id001
+      ansible_connection: docker
+    Ansible-2.2.1: &id002
+      ansible_connection: docker
+    Ansible-2.2.2: &id003
+      ansible_connection: docker
+    Ansible-2.3.0: &id004
+      ansible_connection: docker
+    Ansible-2.3.1: &id005
+      ansible_connection: docker
+    Ansible-2.3.2: &id006
+      ansible_connection: docker
+    Ansible-2.4.0: &id007
+      ansible_connection: docker
+ungrouped:
+  hosts:
+    Ansible-2.2.0: *id001
+    Ansible-2.2.1: *id002
+    Ansible-2.2.2: *id003
+    Ansible-2.3.0: *id004
+    Ansible-2.3.1: *id005
+    Ansible-2.3.2: *id006
+    Ansible-2.4.0: *id007
+  vars: {}

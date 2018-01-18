@@ -1,0 +1,46 @@
+---
+dependency:
+  name: galaxy
+  options: 
+    ignore-certs: True
+    ignore-errors: True
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: Ansible-2.2.0
+    image: padajuan/ansible-docker-base:2.2.0
+  - name: Ansible-2.2.1
+    image: padajuan/ansible-docker-base:2.2.1
+  - name: Ansible-2.2.2
+    image: padajuan/ansible-docker-base:2.2.2
+  - name: Ansible-2.3.0
+    image: padajuan/ansible-docker-base:2.3.0
+  - name: Ansible-2.3.1
+    image: padajuan/ansible-docker-base:2.3.1
+  - name: Ansible-2.3.2
+    image: padajuan/ansible-docker-base:2.3.2
+  - name: Ansible-2.4.0
+    image: padajuan/ansible-docker-base:2.4.0
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      callback_plugins: '../../../../plugins/callback'
+  playbooks:
+    side_effect: side_effect.yml
+  env:
+    ANSIBLE_ROLES_PATH: ':~/.ansible/roles'
+  lint:
+    name: ansible-lint
+    #options:
+    #  r: '~/projects/ansible-lint-rules/rules'
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  options:
+    v: True
+  lint:
+    name: flake8
